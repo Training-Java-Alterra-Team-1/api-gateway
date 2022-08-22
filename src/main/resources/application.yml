@@ -1,0 +1,25 @@
+server:
+  port: 8086
+spring:
+  profiles:
+    active: native
+  application:
+    name: API-GATEWAY
+  devtools:
+    livereload:
+      enabled: true
+  cloud:
+    gateway:
+      routes:
+        - id: AUTH
+          uri: lb://AUTH
+          predicates:
+            - Path=/api/v1/**
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8085/eureka/
+  instance:
+    hostname: localhost
