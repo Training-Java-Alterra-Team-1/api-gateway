@@ -15,6 +15,18 @@ spring:
           uri: lb://AUTH
           predicates:
             - Path=/api/v1/**
+        - id: STUDENT
+          uri: lb://STUDENT
+          predicates:
+            - Path=/api/v1/student/**,
+        - id: LECTURER
+          uri: lb://LECTURER
+          predicates:
+            - Path=/api/v1/lecturer/**
+        - id: KRS
+          uri: lb://KRS
+          predicates:
+            - Path=/api/v1/student-record/**,/api/v1/student-records/**
 eureka:
   client:
     register-with-eureka: true
